@@ -240,7 +240,7 @@
             lbl_playerName.Left += 10
 
 
-        ElseIf e.KeyCode = Keys.A And tmr_ghost.Enabled And Not player.Left = 140 Then
+        ElseIf e.KeyCode = Keys.A And tmr_ghost.Enabled = True And Not player.Left = 140 Then
             player_pb = 1
 
             player_xspeed = -10
@@ -269,28 +269,44 @@
         End If
 
         For i = 0 To 1
-            If ghost_pb(i).Bounds.IntersectsWith(player.Bounds) Then
-                If Not e.KeyCode = Keys.K Then
-                    If tmr_ghostattac > 3 Then
-                        tmr_ghostattac = 0
-                        ProgressBar1.Value -= 10
-                        ' If ghost_pb(i).Left > player.Left Then
-                        ' player.Left -= 15
-                        '   ElseIf ghost_pb(i).Left < player.Left Then
-                        'player.Left += 15
-                        '  End If
-                    End If
-                ElseIf e.KeyCode = Keys.K Then
-                    'For Each ghosts In Me.Controls
-                    '    If ghosts.name.ToString.Contains("ghost") Then
-                    '        If player.Bounds.IntersectsWith(ghosts.Bounds) Then
-                    'If player.Bounds.IntersectsWith(ghost_pb(i).Bounds) Then
-                    If player_pb = 0 Then
-                        If ghost_pb(i).Left > player.Left + 0.375 * player.Width And ghost_pb(i).Left < player.Left + player.Width Then
-                            hit()
+            If ghost_pb(i).Visible Then
+                If ghost_pb(i).Bounds.IntersectsWith(player.Bounds) Then
+                    If Not e.KeyCode = Keys.K Then
+                        If tmr_ghostattac > 3 Then
+                            tmr_ghostattac = 0
+                            ProgressBar1.Value -= 10
+                            ' If ghost_pb(i).Left > player.Left Then
+                            ' player.Left -= 15
+                            '   ElseIf ghost_pb(i).Left < player.Left Then
+                            'player.Left += 15
+                            '  End If
+                        End If
+                    ElseIf e.KeyCode = Keys.K Then
+                        'For Each ghosts In Me.Controls
+                        '    If ghosts.name.ToString.Contains("ghost") Then
+                        '        If player.Bounds.IntersectsWith(ghosts.Bounds) Then
+                        'If player.Bounds.IntersectsWith(ghost_pb(i).Bounds) Then
+                        If player_pb = 0 Then
+                            If ghost_pb(i).Left > player.Left + 0.625 * player.Width And ghost_pb(i).Left < player.Left + player.Width Then
+                                ghost_pb(i).Hide()
+                                If Not ghost1.Visible Then
+                                    lbl_MaorName.Hide()
+                                End If
+                                If Not ghost2.Visible Then
+                                    lbl_AmitName.Hide()
+                                End If
+                            End If
+                            '   hit()
                         ElseIf player_pb = 1 Then
-                            If ghost_pb(i).Left > player.Left And ghost_pb(i).Left < player.Left + 0.375 * player.Width Then
-                                hit()
+                            If ghost_pb(i).Left + ghost_pb(i).Width > player.Left And ghost_pb(i).Left < player.Left + 0.375 * player.Width Then
+                                ghost_pb(i).Hide()
+                                If Not ghost1.Visible Then
+                                    lbl_MaorName.Hide()
+                                End If
+                                If Not ghost2.Visible Then
+                                    lbl_AmitName.Hide()
+                                End If
+                                '  hit()
                             End If
 
                             'For a = 0 To 3
@@ -348,9 +364,10 @@
                             '    End If
                             'End If
                         End If
+                        End If
                     End If
                 End If
-            End If
+
         Next
 
         '        End If

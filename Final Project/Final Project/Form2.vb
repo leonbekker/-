@@ -195,7 +195,7 @@
             lbl_playerName.Left += 10
 
 
-        ElseIf e.KeyCode = Keys.A And tmr_ghost.Enabled And Not player.Left = 140 Then
+        ElseIf e.KeyCode = Keys.A And tmr_ghost.Enabled = True And Not player.Left = 140 Then
             player_pb = 1
 
             player_xspeed = -10
@@ -241,71 +241,72 @@
                         '        If player.Bounds.IntersectsWith(ghosts.Bounds) Then
                         'If player.Bounds.IntersectsWith(ghost_pb(i).Bounds) Then
                         If player_pb = 0 Then
-                            If ghost_pb(i).Left > player.Left + 0.375 * player.Width And ghost_pb(i).Left < player.Left + player.Width Then
-                                hit()
-                            ElseIf player_pb = 1 Then
-                                If ghost_pb(i).Left > player.Left And ghost_pb(i).Left < player.Left + 0.375 * player.Width Then
-                                    hit()
-                                End If
+                        If ghost_pb(i).Left > player.Left + 0.625 * player.Width And ghost_pb(i).Left < player.Left + player.Width Then
+                            hit()
+                        End If
+                    ElseIf player_pb = 1 Then
+                        If ghost_pb(i).Left + ghost_pb(i).Width > player.Left And ghost_pb(i).Left < player.Left + 0.375 * player.Width Then
+                            hit()
+                        End If
 
-                                'For a = 0 To 3
-                                '    If player.Bounds.IntersectsWith(ghost_pb(a).Bounds) Then
-                                '        max -= 0.1 * ((Me.Height - 400) - player.Height)
-                                '        min -= 0.1 * ((Me.Height - 400) - player.Height)
+                        'For a = 0 To 3
+                        '    If player.Bounds.IntersectsWith(ghost_pb(a).Bounds) Then
+                        '        max -= 0.1 * ((Me.Height - 400) - player.Height)
+                        '        min -= 0.1 * ((Me.Height - 400) - player.Height)
 
-                                '        Label2.Text = max & " , " & min
-                                '    End If
-                                'Next
+                        '        Label2.Text = max & " , " & min
+                        '    End If
+                        'Next
 
-                                'Randomize()
-                                'k = Int((2 * Rnd()) + 0)
-                                'If player.Bounds.IntersectsWith(ghost1.Bounds) Then
-                                '    If k = 0 Then
-                                '        ghost1.Left = 1261
-                                '    ElseIf k = 1 Then
-                                '        ghost1.Left = -56
-                                '    Else
-                                '        ghost1.Left = -128
-                                '    End If
-                                'End If
-                                'Randomize()
-                                'k = Int((2 * Rnd()) + 0)
-                                'If player.Bounds.IntersectsWith(ghost2.Bounds) Then
-                                '    If k = 0 Then
-                                '        ghost2.Left = 1469
-                                '    ElseIf k = 1 Then
-                                '        ghost2.Left = -177
-                                '    Else
-                                '        ghost2.Left = 1521
-                                '    End If
-                                'End If
-                                'Randomize()
-                                'k = Int((2 * Rnd()) + 0)
-                                'If player.Bounds.IntersectsWith(ghost3.Bounds) Then
-                                '    If k = 0 Then
-                                '        ghost3.Left = 1625
-                                '    ElseIf k = 1 Then
-                                '        ghost3.Left = -200
-                                '    Else
-                                '        ghost3.Left = -270
-                                '    End If
-                                'End If
+                        'Randomize()
+                        'k = Int((2 * Rnd()) + 0)
+                        'If player.Bounds.IntersectsWith(ghost1.Bounds) Then
+                        '    If k = 0 Then
+                        '        ghost1.Left = 1261
+                        '    ElseIf k = 1 Then
+                        '        ghost1.Left = -56
+                        '    Else
+                        '        ghost1.Left = -128
+                        '    End If
+                        'End If
+                        'Randomize()
+                        'k = Int((2 * Rnd()) + 0)
+                        'If player.Bounds.IntersectsWith(ghost2.Bounds) Then
+                        '    If k = 0 Then
+                        '        ghost2.Left = 1469
+                        '    ElseIf k = 1 Then
+                        '        ghost2.Left = -177
+                        '    Else
+                        '        ghost2.Left = 1521
+                        '    End If
+                        'End If
+                        'Randomize()
+                        'k = Int((2 * Rnd()) + 0)
+                        'If player.Bounds.IntersectsWith(ghost3.Bounds) Then
+                        '    If k = 0 Then
+                        '        ghost3.Left = 1625
+                        '    ElseIf k = 1 Then
+                        '        ghost3.Left = -200
+                        '    Else
+                        '        ghost3.Left = -270
+                        '    End If
+                        'End If
 
-                                'Randomize()
-                                'k = Int((2 * Rnd()) + 0)
-                                'If player.Bounds.IntersectsWith(ghost4.Bounds) Then
-                                '    If k = 0 Then
-                                '        ghost4.Left = 1729
-                                '    ElseIf k = 1 Then
-                                '        ghost4.Left = 1833
-                                '    Else
-                                '        ghost4.Left = -320
-                                '    End If
-                                'End If
-                            End If
+                        'Randomize()
+                        'k = Int((2 * Rnd()) + 0)
+                        'If player.Bounds.IntersectsWith(ghost4.Bounds) Then
+                        '    If k = 0 Then
+                        '        ghost4.Left = 1729
+                        '    ElseIf k = 1 Then
+                        '        ghost4.Left = 1833
+                        '    Else
+                        '        ghost4.Left = -320
+                        '    End If
+                        'End If
+                    End If
                         End If
                     End If
-                End If
+
             Next
 
             '        End If
